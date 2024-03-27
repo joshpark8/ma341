@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fleqn}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{systeme}
+
+% Fundamental sets
+\newcommand{\N}{\mathbb{N}}  % Natural
+\newcommand{\R}{\mathbb{R}}  % Real
+\newcommand{\C}{\mathbb{C}}  % Complex
+\newcommand{\Q}{\mathbb{Q}}  % Rational
+\newcommand{\Z}{\mathbb{Z}}  % Integers
+
+% Misc helpers
+\setlength{\parskip}{1em}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\xn}{(x_n)}
+\newcommand{\xnk}{(x_{n_k})}
+
+% Title
+\author{Josh Park}
+\date{\vspace{-1em}Spring 2024}
+\title{MA 34100 Homework 5\vspace{-1em}}
+
+% Document
+\begin{document}
+    \maketitle
+    \section*{Exercise 3.1.2}
+    % give a formula for the nth term of each sequence
+        % a) 5, 7, 9, 11, ...
+        % b) 1/2, -1/4, 1/8, -1/16, ...
+        % c) 1/2, 2/3, 3/4, 4/5, ...
+        % d) 1, 4, 9, 16, ...
+    \begin{enumerate}[label=\alph*)]
+        \item \[ X=\left(3+2n : n\in\N\right) \]
+        \item \[ X=\left(\frac{1}{2^n}(-1)^n : n\in\N\right) \]
+        \item \[ X=\left(\frac{n}{n+1} : n\in\N\right) \]
+        \item \[ X=\left(n^2 : n\in\N\right) \]
+    \end{enumerate}
+
+    \section*{Exercise 3.1.5}
+    % use the dfn of limit of seq to establish the following limits
+        % a) lim({n} / {n^2 + 1}) = 0
+        % d) lim({n^2 - 1} / {2n^2 + 3}) = 1/2
+    \begin{enumerate}
+        \item[a)] Fix any $\eps > 0$. Set $N=\frac{1}{\eps}$. Then for all $n\geq N$,
+            \begin{flalign*}
+                \left| x_n-x \right| = \left|\frac{n}{n^2+1}-0\right| < \frac{1}{N}=\frac{1}{\frac{1}{\eps}}=\eps
+            \end{flalign*}
+            That is, $\left| x_n-x \right| < \eps$ for all $n\geq N$. Thus, $\lim x_n=0$.
+        \item[d)] Fix any $\eps > 0$. Set $N=\sqrt{\frac{5-6\eps}{4\eps}}$. Then for all $n\geq N$,
+            \begin{flalign*}
+                \left| x_n-x \right| &= \frac{5}{4n^2+6} < \frac{5}{4N^2+6} = \frac{5}{4\left(\frac{5-6\eps}{4\eps}\right)+6} \\
+                &= \frac{5}{\left(\frac{5-6\eps}{\eps}\right)+6} = \frac{5}{\left(\frac{5}{\eps}-6\right) + 6} = \frac{5}{\frac{5}{\eps}}=\eps
+            \end{flalign*}
+            That is, $\left| x_n-x \right| < \eps$ for all $n\geq N$. Thus, $\lim x_n=\frac{1}{2}$.
+    \end{enumerate}
+
+    \section*{Exercise 3.1.6}
+    % show that
+        % a) lim(1/sqrt(n+7)) = 0
+        % c) lim(sqrt(n)/n+1) = 0
+    \begin{enumerate}
+        \item[a)] Fix any $\eps > 0$. Set $N=\frac{1}{\eps^2}-7$. Then for all $n\geq N$,
+        \begin{flalign*}
+            \left| x_n-x \right| = \left|\frac{1}{\sqrt{n+7}}-0\right| < \frac{1}{\sqrt{N+7}}=\frac{1}{\sqrt{\frac{1}{\eps^2}-7+7}}=\frac{1}{\frac{1}{\eps}}=\eps
+        \end{flalign*}
+        That is, $\left| x_n-x \right| < \eps$ for all $n\geq N$. Thus, $\lim x_n=0$.
+        \item[c)] Fix any $\eps > 0$. Set $N=\frac{1}{\eps}$. Then for all $n\geq N$,
+        \begin{flalign*}
+            m\left| x_n-x \right| = \left|\frac{\sqrt{n}}{n+1}-0\right| < \frac{\sqrt{N}}{N+1}=\frac{\sqrt{\frac{1}{\eps}}}{\frac{1}{\eps}+1}=\frac{\frac{1}{\sqrt{\eps}}}{\frac{1+\eps}{\eps}}=\frac{\eps}{1+\eps}<\eps
+        \end{flalign*}
+            That is, $\left| x_n-x \right| < \eps$ for all $n\geq N$. Thus, $\lim x_n=0$.
+    \end{enumerate}
+
+    \section*{Exercise 3.1.11}
+    % show that lim(1/n - 1/(n+1)) = 0
+    Fix any $\eps > 0$. Set $N=\frac{1}{\eps}$. Then for all $n\geq N$,
+    \begin{flalign*}\left| x_n-x \right| &= \left|\frac{1}{n}-\frac{1}{n+1}-0\right| = \left|\frac{1}{n}-\frac{1}{n+1}\right| = \left|\frac{n+1-n}{n(n+1)}\right| \\
+        &= \left|\frac{1}{n(n+1)}\right| < \frac{1}{N(N+1)} = \frac{1}{\frac{1}{\eps}\left(\frac{1}{\eps}+1\right)} \\
+        &= \frac{\eps}{\frac{1+\eps}{\eps}} = \frac{\eps^2}{1+\eps} < \eps\end{flalign*}
+    That is, $\left| x_n-x \right| < \eps$ for all $n\geq N$. Thus, $\lim_{n\to\infty} x_n=0$.
+
+    \section*{Exercise 3.2.3}
+    % show that if X and Y are seq s.t. X and X+Y converge, then Y converges
+    We know that $X$ converges to $x$ and $X+Y$ converges to $x+y$ by the squeeze theorem, so we can see that $Y$ converges to $(x+y)-x=y$.
+
+    \section*{Exercise 3.2.4}
+    % show that if X and Y are seq such that x converges to x \neq 0 and XY converges, then Y converges
+    We know that $X$ converges to $x\neq 0$ and $XY$ converges to $xy$ by the squeeze theorem, so we can see that $Y$ converges to $\frac{xy}{x}=y$.
+
+    \section*{Exercise 3.2.6}
+    % find the limits of the following sequences
+        % a) lim( ( 2 + 1/n )^2 )
+        % b) lim( ( (-1)^n / (n+2) ) )
+        % c) lim( ( (sqrt(n)-1) / (sqrt(n)+1) )
+        % d) lim( (  (n+1) / n*sqrt(n) ) )
+    \begin{enumerate}[label=\alph*)]
+        \item \[ \lim_{n\to\infty}\left({\left(2+\frac{1}{n}\right)}^2\right) = 4\]
+        \item \[ \lim_{n\to\infty}\left(\frac{{(-1)}^n}{n+2} \right) = 0 \]
+        \item \[ \lim_{n\to\infty}\left(\frac{\sqrt{n}-1}{\sqrt{n}+1}\right) = 1 \]
+        \item \[ \lim_{n\to\infty}\left(\frac{n+1}{n\sqrt{n}}\right) = 0 \]
+    \end{enumerate}
+\end{document}

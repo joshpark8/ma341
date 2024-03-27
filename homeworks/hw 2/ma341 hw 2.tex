@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fleqn}
+
+% Fundamental sets
+\newcommand{\N}{\mathbb{N}}    % Natural
+\newcommand{\R}{\mathbb{R}}    % Real
+\newcommand{\C}{\mathbb{C}}    % Complex
+\newcommand{\Q}{\mathbb{Q}}    % Rational
+\newcommand{\Z}{\mathbb{Z}}    % Integers
+
+% Title
+\author{Josh Park}
+\date{Spring 2024}
+\title{MA 34100 \\Homework 2}
+
+% Document
+\begin{document}
+  \maketitle
+  \section*{Section 1.2}
+  \begin{enumerate}
+    \item[2)] Our base case is when $n=1$, because $1^3 = {[\frac{1}{2}1(1+1)]}^2 = 1^2 = 1$. \\
+      Assume that the statement holds for $n$. We wish to prove it holds for $n+1$.
+      \begin{align}
+        1^3+2^3+\cdots+n^3+(n+1)^3 &= \left[\frac{1}{2}n(n+1) \right]^2+(n+1)^3 \\
+                                   &= \left[\frac{1}{2}(n^2+n) \right]^2+(n+1)^3 \\
+                                   &= \frac{n^4+2n^3+n^2}{4}+(n+1)^3 \\
+                                   &= \frac{n^4+6n^3+13n^2+12n+4}{4} \\
+                                   &= \frac{(n^2+3n+2)(n^2+3n+2)}{4} \\
+                                   &= \left[\frac{n^2+3n+2}{2}\right]^2 \\
+                                   &= \left[\frac{1}{2}(n^2+3n+2) \right]^2 \\
+                                   &= \left[\frac{1}{2}(n+1)(n+2) \right]^2
+      \end{align}
+      The final expression is equivalent to the original statement with $n+1$ substituted for $n$, so the statement holds for $n+1$ and thus for all $n \in \N$.
+
+    \item[7)] Our base case is when $n=1$, because $5^{2(1)}-1 = 25-1 = 24 = 8 \cdot3$. \\
+        Assume that the statement holds for $n$. We wish to prove it holds for $n+1$. \\
+        \begin{align}
+          5^{2(n+1)}-1 &= 5^{2n+2} - 1 \\
+                       &= 5^{2n}5^2 - 1 \\
+                       &= ((5^{2n}-1)+1)5^2 - 1 \\
+                       &= (5^{2n}-1)5^2+5^2 - 1
+        \end{align}
+        If the quantity $5^{2n}-1$ is divisible by 8 for $n$, then any multiple of $5^{2n}-1$ is also divisible by 8. The final expression can be written $5^2(5^{2n}-1)+(5^2 - 1)$, and we can see that $5^2(5^{2n}-1)$ is divisible by 8. We also know that $5^2-1 = 24 = 8 \cdot3$, so the final expression is divisible by 8. Therefore, the statement holds for $n+1$ and thus for all $n \in \N$.
+
+    \item[14)] Our base case is when $n=4$, because $2^4 = 16 < 24 = 4!$. \\
+      Assume that the statement holds for $n$. We wish to prove it holds for $n+1$.
+      \begin{align}
+        2^{n+1} = 2 \cdot2^n < 2 \cdot n! < (n+1) \cdot n! = (n+1)!
+      \end{align}
+      The final expression is equivalent to the original statement with $n+1$ substituted for $n$, so the statement holds for $n+1$ and thus for all $n \in \N$.
+  \end{enumerate}
+
+  \section*{Section 1.3}
+  \begin{enumerate}
+    \item[2)] \begin{enumerate}
+      \item[b)] The set $A$ has $m$ elements, so there exists some bijection $f:A \mapsto \N_m$. Let $C = \{c \}$ where $c \in A$, and let $n=f^{-1}(c)$. Also define $g:A \mapsto \N_m$ such that
+                \[ g(i) = \begin{cases}
+                    f(i), & i = 1, 2, \ldots, n-1 \\
+                    f(i+1), & i = n, n+1, \ldots, m-1
+                \end{cases} \]
+                The only two cases are when $i \in \N_{n-1}$ and when $i \in \N_{m-1}\setminus \N_{n-1}$. \\
+                Case 1: Suppose $x, y \in \N_{n-1}$ where $x \neq y$ and $g(x), g(y) \in f(\N_{n-1})$. We know that $f$ is injective, so $g(x) \neq g(y)$. \\
+                Case 2: Suppose $x, y \in \N_{m-1}\setminus \N_{n-1}$ where $x \neq y$ and $g(x), g(y) \in f(\N_{m-1}\setminus \N_{n-1})$. We know that $f$ is injective, so $g(x) \neq g(y)$. \\
+                This proves injectivity, but not surjectivity. \\
+                Consider some element $q \in A \setminus C$. Because $f$ is a bijection, there must exist some $p \in \N_m$ such that $f(p) = q$. If $p < n$, $p \in \N_{n-1}$ and $g(p)=f(p)=q$. If $n < p \leq m$, $p-1 \in \N_{m-1}$ such that $g(p-1) = f(p) = q$. So, $g$ is surjective. \\
+                Thus $g$ is a bijection from $A \setminus C \mapsto \N_{m-1}$.
+      \item[c)] Suppose $C \setminus B$ is a finite set. If $C \setminus B$ is finite, then $\vert C \setminus B \vert \in \N$. Thus, we can write $C \setminus B = \{x_1, x_2, \ldots, x_n \}$ where $n=\vert C \setminus B \vert$. If $C$ is an infinite set, there must exist some elements of $C$ that are not in $B$. Consider the element $\alpha \in C$ such that $\alpha \notin B$. However, $\alpha \notin \{x_1, x_2, \ldots, x_n \}$. This is a contradiction, so $C \setminus B$ must be an infinite set.
+    \end{enumerate}
+    \item[4)] Let $O$ be the set of all odd numbers greater than 13. Consider the function $f:O \mapsto \N$ such that $f(x) = \frac{x-13}{2}$. This function is injective because if $f(x) = f(y)$, then $\frac{x-13}{2} = \frac{y-13}{2}$, so $x=y$. This function is also surjective because for any $n \in \N$, $f(2n+13) = n$. Thus, $f$ is a bijection from $O \mapsto \N$.
+    \item[6)] Suppose we have some $m \in \N$. Consider the function $f:\N_m \mapsto \N$ such that $f(x) = x-m$. This function is injective because if $f(x) = f(y)$, then $x-m = y-m$, so $x=y$. This function is also surjective because for any $n \in \N$, $f(n+m) = n$. Thus, $f$ is a bijection from $\N_m \mapsto \N$.
+    \item[12)] Our base case is when $n=0$, because the power set of the empty set only has $2^n=2^0=1$ element. Suppose this holds for $n$. If we add a new element $q$ to $S$, then $\vert S \vert = n+1$ and $\vert \mathcal{P}(s) \vert = 2 \vert \mathcal{P}(s) \setminus \{q \}\vert = 2*2^n = 2^{n+1} $. Thus, the induction hypothesis must be true and $\mathcal{P}(S)$ must have $2^n$ elements for all $n \in \N$.
+  \end{enumerate}
+
+\end{document}

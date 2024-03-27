@@ -1,0 +1,530 @@
+\documentclass{report}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{CJK}
+\usepackage{enumitem}
+\usepackage{epsf}
+\usepackage{fleqn}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{latexsym}
+\usepackage{systeme}
+
+% Macros
+    % Fundamental sets
+    \newcommand{\N}{\mathbb{N}}  % Natural
+    \newcommand{\R}{\mathbb{R}}  % Real
+    \newcommand{\C}{\mathbb{C}}  % Complex
+    \newcommand{\Q}{\mathbb{Q}}  % Rational
+    \newcommand{\Z}{\mathbb{Z}}  % Integers
+
+    % Stylings
+    \renewcommand{\L}{\mathbb{L}}
+
+    % Font styles
+    \renewcommand{\bold}[1]{\textbf{#1}}  % Bold
+    \newcommand{\ul}[1]{\underline{#1}}  % Underline
+
+    \newcommand{\xn}{(x_n)}
+    \newcommand{\xnkp}{(x_{n_k})}
+    \newcommand{\xnk}{x_{n_k}}
+
+    % Custom environments
+    \newtheoremstyle{mystyle} % name of the style to be used
+        {2em} % space to leave above
+        {0em} % space tp leave below
+        {} % name of font to use for the body of the theorem
+        {} % measure of space to indent
+        {\bfseries}% name of head font
+        {.}% punctuation between head and body
+        { }% space after theorem head; " " = normal interword space
+        {\thmname{#1}\thmnote{ #3}}% Manually specify head
+
+    \theoremstyle{mystyle}
+    \newtheorem*{theorem}{Theorem}
+    \newtheorem*{corollary}{Corollary}
+    \newtheorem*{lemma}{Lemma}
+    \newtheorem*{proposition}{Proposition}
+    \newtheorem*{definition}{Definition}
+    \newtheorem*{example}{Example}
+    \newtheorem*{examples}{Examples}
+    \newtheorem*{remark}{Remark}
+    \newtheorem*{note}{Note}
+    \newtheorem*{fact}{Fact}
+    \newtheorem*{question}{Question}
+    \newtheorem*{answer}{Answer}
+    \newtheorem*{terminology}{Terminology}
+    \newtheorem*{exploration}{Exploration}
+    \newtheorem*{explanation}{Explanation}
+    \newtheorem*{yesterday}{Yesterday}
+
+    \newtheoremstyle{customtheorem}
+        {3pt} % Space above
+        {3pt} % Space below
+        {} % Body font
+        {} % Indent amount
+        {\bfseries} % Theorem head font
+        {.} % Punctuation after theorem head
+        {.5em} % Space after theorem head
+        {\thmnote{ (#3)}} % Theorem head spec
+
+    \theoremstyle{customtheorem}
+    \newtheorem{customthm}{Theorem}
+
+    % % Environment macros
+    \newcommand{\pf}[1]{    \begin{proof}\vspace{-1.5em}{#1}\end{proof}  }
+    \newcommand{\cor}[2]{   \begin{corollary}[#1] #2\end{corollary}      }
+    \newcommand{\thm}[2]{   \begin{theorem}[#1] #2\end{theorem}          }
+    \newcommand{\ex}[1]{    \begin{example}{#1}\end{example}             }
+    \newcommand{\prop}[1]{  \begin{proposition}{#1}\end{proposition}     }
+    \newcommand{\ie}[1]{    \begin{examples}{#1}\end{examples}           }
+    \newcommand{\dfn}[1]{   \begin{definition}{#1}\end{definition}       }
+    \newcommand{\xplr}[1]{  \begin{exploration}{#1}\end{exploration}     }
+    \newcommand{\xpln}[1]{  \begin{explanation}{#1}\end{explanation}     }
+    \newcommand{\ques}[1]{  \begin{question}{#1}\end{question}           }
+    \newcommand{\ans}[1]{   \begin{answer}{#1}\end{answer}               }
+    \newcommand{\term}[1]{  \begin{terminology}{#1}\end{terminology}     }
+    \newcommand{\nt}[2]{    \begin{note}[#1] #2\end{note}                }
+    \newcommand{\fct}[1]{   \begin{fact}{#1}\end{fact}                   }
+    \newcommand{\rk}[1]{    \begin{Remark}{#1}\end{Remark}               }
+    \newcommand{\yest}[1]{  \begin{yesterday}{#1}\end{yesterday}         }
+
+
+    % Extra commands
+    \newcommand{\spann}[1]{\text{span}(#1)}  % Span
+
+    % Misc helpers
+    \setlength{\parskip}{1em}
+    \setlist[enumerate]{itemsep=2mm, topsep=0mm, parsep=0mm}
+% Title
+\title{MA 341 lecture notes}
+\author{Josh Park}
+\date{Fall 2023}
+
+% Document
+\begin{document}
+    \maketitle
+    \setlength{\parindent}{0pt}
+    % \chapter*{Lecture 1}
+    % \chapter*{Lecture 2}
+    % \chapter*{Lecture 3}
+    % \chapter*{Lecture 4}
+    % \chapter*{Lecture 5}
+    % \chapter*{Lecture 6}
+    % \chapter*{Lecture 7}
+    \chapter*{Lecture 8}
+    Def: Let $A \subseteq \R$ be nonemppty. $s \in \R$ is the supremum of $A$, written $s=\sup(A)$ if:
+    \begin{enumerate}[label=(\roman*)] \vspace{-1em}
+        \item $s$ is an upper bound for $A$
+        \item If $s'$ is an upper bound for $A$, then $s \leq s'$
+    \end{enumerate}
+
+    Def: $l$ is the infimum of $A$ if: \vspace{-1em}
+    \begin{enumerate}[label=(\roman*)]
+        \item $l$ is a lower bound for $A$
+        \item If $l'$ is a lower bound for $A$, then $l'\leq l$
+    \end{enumerate}
+
+    Suppose that $s,r$ satisfy i) and ii) in def of sup. Then $s \leq r$ and $r \leq s$. So $s=r$.\\
+    i.e. the supremum, when it exists, is unique (same for infimum)
+    \[s=\sup(A), \;A \subseteq \R,\; A \neq \emptyset \]
+    The following statements are equivalent to ii) below. \vspace{-1em} \begin{enumerate}
+        \item[ii)'] If $z>s$, then $z$ is \ul{not} an upper bound for $A$.
+        \item[ii)'] If $z < s$, then $\exists x \in A$ such that $x>z$.
+    \end{enumerate}
+
+    % \chapter*{Lecture 9} FIXME:
+    % \chapter*{Lecture 10} FIXME:
+    \pagebreak
+
+    \chapter*{Lecture 11}
+    \section*{Section 2.? --- Nested Intervals}
+    \textbf{Thm: If $I_n=[a_n,b_n$] with $I_{n+1}\subseteq I_n \forall n \in \N$, then $\bigcap_{n=1}^{\infty} I_n \neq \emptyset$} \\
+    photo here feb 02 12:40pm
+
+
+    \textbf{Thm: $\R$ is uncountable.}
+    \begin{proof}
+        It is enough to show taht $[0,1]$ is uncountable.\\
+        Suppose \ul{not}, i.e. $[0,1]=\{x_k \mid k \in \N\}$. $x_1$ lies somewhere between $0$ and $1$, so choose a nested interval $I_1=[a_1,b_1]$ such that $x_1 \not \in I_1$. Next, choose $I_2 \subseteq I$, such that $x_2 \not \in I_2$. Continuing in this fashion, find $I_n\subseteq I_{n-1}$ such that $x_1, x_2, \ldots, x_n\not\in\I_n$. By Thm, $\eta \in \bigcap_{n=1}^\infty I_n$, so $\eta \neq x_n$ for any $n, \eta\in [0,1]$. It follows that [0,1] is not countable.
+    \end{proof}
+
+    \section*{Section 3.1 --- Sequences}
+    \textbf{Def:} A sequence is a function $a:\N \to \R$ (usually written $f(n)=x_n$)
+
+    \textbf{Ex: $x_n=b, b\in \R$}
+
+    \textbf{Ex: $x_n=\frac{1}{2^n}$}
+    \[\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \ldots\]
+
+    \textbf{Ex: $x_1=2, x_{n+1}=x_n+2$}
+    \[2, 4, 6, 8, \ldots\]
+
+    \textbf{Ex: $x_1=1, x_{n+1}=\frac{1}{2}(x_n+\frac{2}{x_n})$}
+
+
+    \textbf{Def(WILL BE ON MIDTERM):} Let $(x_n)$ be a sequence. We say that the limit of $x_n$ is equal to some number $L \in \R$, written
+    \[ \lim_{n\rightarrow\infty}x_n=L \]
+    if $\forall \epsilon > 0, \exists N(\epsilon) \in \N$ such that $|x_n-L|<\epsilon$ whenever $n\geq N(\epsilon)$.
+
+    \textbf{Ex:} Let $x_n=b \quad \forall n, b \in \R$.
+    \begin{enumerate}
+        \item Let $\epsilon>0$ be given
+        \item Analyze $|x_n-L|$
+        \[ (L=b, x_n=b) \]
+        Want $|b-b|<\epsilon\iff 0 < \epsilon$, so choose $N(\epsilon)=1$
+        \item Given $\epsilon > 0$ choose $N(\epsilon)=1$. Then, if $n\geq N(\epsilon)$, then $|x_n-L|= 0 < \epsilon$
+    \end{enumerate}
+
+    \textbf{Ex:} Show $\lim_{n\rightarrow \infty}\frac{1}{n}=0$.
+    \begin{enumerate}
+        \item Let $\epsilon > 0$ be given
+        \item Analyze $|x_n-L|$
+        \begin{flalign}
+            \left|x_n-L\right|&=\left|\frac{1}{n}-0\right|\\
+            &=\frac{1}{n} \\
+        \end{flalign}
+        Choose $N(\epsilon)=\frac{1}{n}+1$
+        \item Given $\epsilon > 0$, set $N(\epsilon)=\frac{1}{\epsilon}+1$. Then, if $n\geq N(\epsilon)$, we have \[|x_n-0|=\frac{1}{n}<\epsilon\]
+    \end{enumerate}
+
+    \textbf{Ex.} $x_n=\frac{1}{n^2+1}\;\forall n$, show $\lim_{n\rightarrow\infty}=0.$
+    \begin{enumerate}
+        \item Let $\epsilon > 0$ be given
+        \item Analyze $|x_n-L|$
+        \begin{flalign}
+            \left|x_n-L\right|&=\left|\frac{1}{n^2+1}-0\right|\\
+            &=\frac{1}{n^2+1}
+        \end{flalign}
+        Want $\frac{1}{n^2+1}<\epsilon$
+        \begin{flalign}
+            \frac{1}{n^2+1}&<\epsilon \\
+            \frac{1}{\epsilon}&<n^2+1 \\
+            \sqrt{\frac{1}{\epsilon}-1}&<n
+        \end{flalign}
+        So, choose $N(\epsilon)=\sqrt{\frac{1}{\epsilon}-1}+1$
+        \item Given $\epsilon > 0$, choose $N(\epsilon)=\sqrt{\frac{1}{\epsilon}-1}+1$. Then, if $n\geq N(\epsilon)$, we have \[|x_n-L|<\epsilon \text{ if } n\geq N(\epsilon)\]
+        So, $\lim_{n\rightarrow\infty}\frac{1}{n^2+1}=0$
+    \end{enumerate}
+
+    % \chapter*{Lecture 12}
+    % \chapter*{Lecture 13}
+    % \chapter*{Lecture 14}
+
+    \chapter*{Lecture 15}
+    \section*{Section 3.3 --- Monotone Sequences}
+    \dfn{
+        A sequence $(x_n)$ is \begin{enumerate}
+            \item increaseing if $x_{n+1}\geq x_n$ for all $n\in\N$
+            \item decreasing if $x_{n+1}\leq x_n$ for all $n\in\N$
+        \end{enumerate}
+        $(x_n)$ is monotone if 1 or 2 holds.
+    }
+
+    \begin{theorem}
+        A monotone sequence converges iff it is bounded. If $(x_n)$ is increasing and bounded, then $(x_n)\rightarrow \sup\{x_n\vert n\in\N\}$. If $(x_n)$ is decreasing and bounded, then $(x_n)\rightarrow \inf\{x_n\vert n\in\N\}$.
+    \end{theorem}
+
+    \begin{proof}
+        If $(x_n)$ converges then $(x_n)$ is bdd.  Only need to show bounded implies convergent.
+        \begin{enumerate}[label=(\roman*)]
+            \item Suppose $(x_n)$ is increasing and bounded. Then $\{x_n\vert n\in\N\}$ is bounded above so $s=\sup\{x_n\vert n\in\N\}$.
+            Let $\epsilon$ be given. Then $\exists N \in \N$ such that \[s-\epsilon < x_N \leq s\quad\implies\quad \vert x_n-s \vert < \epsilon\]
+            If $n\geq N$, then \[s-\epsilon < x_N \leq x_n \leq s.\] So, $(x_n)\rightarrow s$.
+            \item Suppose $(x_n)$ bounded, decreasing., Then $r=\inf\{x_n\vert n\in\N\}$ exists. Let $\epsilon$ be given. Then, $\exists N \in \N$ such that
+            \[ r \leq x_N < r+\epsilon \quad\implies\quad |x_N-r|<\epsilon\quad\implies\quad |x_n-r|<\epsilon\]for all $n\geq \N$
+        \end{enumerate}
+    \end{proof}
+
+    \ex{
+        $x_1=1,\quad x_{n+1}=\frac{1}{4}(2x_n+3)$.\\
+        Show $(x_n)$ is increasing
+        \[1=x_1\leq x_2=\frac{5}{4}\]
+        Assume $x_n \geq x_n$. Show $x_{n+2}\geq x_{n+1}$. We have
+        \begin{flalign*}
+            x_{n+2}\geq x_{n+1} &\iff \frac{1}{4}(2x_{n+1}+3)\geq \frac{1}{4}(2x_n+3)\iff x_{n+1}\geq x_n
+        \end{flalign*}
+        So $(x_n)$ is increasing. Let's show $x_n<2$.
+        \[x_1=1<2\]
+        Assume $x_n<2$. Show $x_{n+1}<2$. We have
+        \begin{flalign*}
+            x_{n+1}=\frac{1}{4}(2x_n+3) &< \frac{1}{4}(2\cdot 2+3) = \frac{1}{4}(4+3) = \frac{7}{4} <2
+        \end{flalign*}
+        Thus $x_n\rightarrow L\in \R$. \\
+        $L=\sup\{x_n\vert n\in\N\}$. \\
+        L ``should'' satisfy $L=\frac{1}{4}(2L+3)$.\\
+        Need to show \[\left| L - \frac{1}{4}(2L+3)\right| < \epsilon,\; \forall \epsilon > 0\]
+        \begin{flalign*}
+            \left|L-\frac{1}{4}(2L+3)\right|&=\left|L-x_{n+1}+x_{n+1}-\frac{1}{4}(2L+3)\right|\\
+            &=\left| x_{n+1}-L \right| + \left| \frac{1}{4}(2x_n+3) - \frac{1}{4}(2L+3) \right|\\
+            &=\left| x_{n+1}-L \right| + \frac{1}{2}\left|x_n-L\right|\\
+            &=\left| x_{n+1}-L \right| + \left|x_n-L\right| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+        \end{flalign*}
+        pic of sol @ 1:06 pm mon feb 12
+    }
+
+    \ex{
+        $x_1=1, \quad x_{n+1}=\sqrt{2x_n}$
+        \[x_1=1,\; x_2=\sqrt{2},\; x_3=\sqrt{2\sqrt{2}}\]
+        Show $(x_n)$ is increasing.
+        \[x_1=1\leq x_2=\sqrt{2}\]
+        Assume $x_n\leq x_{n+1}$. Show $x_{n+1}\leq x_{n+2}$. We have
+        \begin{flalign*}
+            x_{n+1}\leq x_{n+2} \iff \sqrt{2x_n}\leq \sqrt{2x_{n+1}}\iff 2x_n\leq 2x_{n+1}\iff x_n\leq x_{n+1}
+        \end{flalign*}
+        Thus $(x_n)$ is increasing. Let's show $x_n<2$.
+        \[x_1=1<2\]
+        Assume $x_n<2$. Show $x_{n+1}<2$. We have
+        \begin{flalign*}
+            x_{n+1}=\sqrt{2x_n} &< \sqrt{2\cdot 2} = \sqrt{4} = 2
+        \end{flalign*}
+        $(x_n)$ is bounded, so $x_n\rightarrow L$.
+        $L$ must satisfy $L=\sqrt{2L}$.
+        \begin{flalign*}
+            \left|L-\sqrt{2L}\right|&\implies L^2 = 2L\\
+            &\implies L(L-2)=0 \\
+            &\implies L=2
+        \end{flalign*}
+    }
+
+    \section*{Section 3.4 --- Subsequences}
+    \dfn{Let ($x_n$) be a sequence and let $n_1<n_2<n_3<\ldots$ be a strictly increasing sequence in $\N$. Then, the sequence $(x_{n_k})^\infty_{k=1}$ is called a subsequence of $(x_n)$.}
+    \begin{example}
+        \( x_n=n, \quad n_k=2^k \)\vspace{-1em}
+        \[ (x_{n_k}) = (2, 4, 8, 16, 32, \ldots) \]
+    \end{example}
+
+    \begin{customthm}
+        $(x_n)$ diverges if either of the following holds:
+        \begin{enumerate}
+            \item $(x_n)$ has two convergent subsequences ($x_{n_{k}}$), ($x_{n_{k'}}$) with different limits
+            \item $(x_n)$ is unbounded
+        \end{enumerate}
+    \end{customthm}
+
+    \begin{customthm}
+        Every sequence has a monotone subsequence.
+    \end{customthm}
+    \begin{definition}
+        Given $\xn$, say that $x_m$ is a \emph{peak} if $x_m \geq x_n$ for all $n\geq m$.
+    \end{definition}
+    \begin{proof}
+        Let $\xn$\ be given.
+        \begin{enumerate}
+            \item[Case 1:] $\xn$ has infinitely many peaks
+            \[ x_{m_1}, x_{m_2}, x_{m_3}, \ldots \qquad\qquad m_1 < m_2 < m_3 < \cdots \qquad\qquad x_{m_1} \geq x_{m_2} \geq x_{m_3} \geq \ldots \]
+            So $(x_{m_k})$ is decreasing.
+            \item[Case 2:] $\xn$\ has finitely many peaks (maybe zero)
+            \[ x_{m_1}, x_{m_2}, \ldots, x_{m_r}\]
+            Set $s_1=m_r+1$. Then $x_s$ is NOT a peak so $\exists s_2 > s_1$ such that $x_{s_1} < x_{s_2}$, $s_2 > m_r$ so $x_{s_2}$ is NOT a peak and $\exists s_3 > s_2$ such that $x_{s_2} < x_{s_3}$, etc.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{customthm}[Bolzano-Weierstrass Theorem]
+        Every bounded sequence has a convergent subsequence.
+    \end{customthm}
+
+    \begin{proof}[Proof \#1]
+        $\xn$\ has a monotone subseq, $\xnkp$, and $\xnkp$\ is bounded (and thus converges). If $I=[a,b]$, set $U_I=[\frac{a+b}{2}, b],\; L_I=[a, \frac{a+b}{2}]$.
+    \end{proof}
+
+    \begin{proof}[Proof \#2]
+        $\xn$\ bounded so $\xn$$\in [-M, M]=I_0$
+        \begin{enumerate}
+            \item[Step 1)] Either $U_{I_0}$ or $L_{I_0}$ contains infinitely many terms of $\xn$. Call this interval $I_1$ and choose $(x_{n_1})\in I_1$.
+            \item[Step 2)] $I_1$ contains infinitely many $\xn$'s so one of $U_{I_1}$ or $L_{I_1}$ contains infinitely many $\xn$'s. Call this $I_2$ and choose $(x_{n_2})\in I_2$ AND $n_2 > n_1$.
+        \end{enumerate}
+
+        Assume we have found $I_n$ which is either $U_{I_{n-1}}$ or $L_{I_{n-1}}$ and contains infinitely many $\xn$'s, and contains $\xnkp$ with $n_k > n_{k-1}$ (where $x_{n_{k-1}}\in I_{k-1}$). One of $U_{I_k}$ or $L_{I_k}$ has inifintely many elements. Call this $I_{k+1}$ and choose $x_{n_{k+1}}\in I_{k+1}$ with $n_{k+1} > n_k$.
+
+        Now $I_0 \supseteq I_1 \supseteq I_2 \supseteq \ldots$ are nested closed bounded intervals. Moreover, the length of $I_k$ is
+        \[\frac{2M}{2^k}=\frac{M}{2^{k-1}}\xrightarrow{k\rightarrow\infty}0\]
+
+        So by prev Thm, $\bigcap^\infty_{k=1}=\left\{\eta\right\}$
+
+        Let $\epsilon > 0$ be given. Find $K\in\N$ such that \[\frac{M}{2^{k-1}}<\epsilon\quad \forall k\geq K.\] Then
+        \[ \left|\xnkp-\eta\right| \leq \frac{M}{2^{k-1}} < \epsilon \quad \forall k \geq K\]
+        since \[\xnkp, \eta \in I_k \quad \forall k\geq K\]
+        Thus, $\lim_{k\rightarrow\infty}\xnkp=\eta$.
+    \end{proof}
+
+    \section*{Limsup and Liminf}
+    Let $\xn$ be a bounded sequence. Consider $\mathbb{L}=\left\{l\in\R \; \vert\; \exists \xnkp \text{ s.t. } x_{n_k}\rightarrow l\right\}$
+
+    \dfn{$\mathbb{L}$ is the set of \emph{subsequential limits}.}
+    By B-W, $\mathbb{L}\neq \emptyset,\; \mathbb{L}$ is bounded.
+    \[\limsup x_n = \sup\mathbb{L}\]
+    \[\liminf x_n = \inf\mathbb{L}\]
+
+    \chapter*{Lecture 16}
+    \section*{Section 3.5 --- Cauchy Criterion}
+    \dfn{$\xn$ is Cauchy if $\forall\varepsilon > 0,\ \exists N\in\N$ such that $\left|x_n-x_m\right| \forall n,m\geq N$}
+    \begin{theorem}
+        If $x_n\to L$ then $\xn$ is Cauchy.
+    \end{theorem}
+    \begin{proof}
+        Let $\varepsilon > 0$ be given. We must find some $N\in \N$ such that
+        \begin{flalign*} \left|x_n-L\right| < \frac{\varepsilon}{2},\ \forall n\in\N \end{flalign*}
+        Now
+        \begin{flalign*}
+            &\left|x_n-x_m\right|=\left|x_n-L+L-x_m\right| \\
+            &\leq \left|x_n-L\right|+\left|x_m-L\right| < \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon \; \text{if } n,m\geq N
+        \end{flalign*}
+    \end{proof}
+
+    \begin{theorem}
+        If $\xn$ is Cauchy, then $\xn$ is bounded.
+    \end{theorem}
+    \begin{proof}
+        Set $\varepsilon=1$, find N such that $|x_n-x_m|<1$ for all $n,m>\N$. In particular
+        \begin{flalign*} |x_N-x_m| < 1 \; \forall m\geq N \end{flalign*}
+        By the Triangle Inequality, $|x_m| < |x_N|+1\;\forall m\geq N$. \\
+        Set $M=\max\{|x_1|, |x_2|, \ldots, |x_{N-1}|, |x_N|+1\}$. Then $|x_n|\leq M,\ \forall n\in\N$.
+    \end{proof}
+
+    \begin{theorem}
+        $\xn$ is convergent $\iff \xn$ is Cauchy.
+    \end{theorem}
+    \begin{proof}
+        Convergent $\implies$ Cauchy, so assume $\xn$ is Cauchy. Then $\xn$ is bounded so $\exists$ a subsequence $\xnkp$ such that $\xnkp\to L$. Let $\varepsilon > 0$ be given. Find $N\in\N$ such that
+        \begin{flalign*} |x-n-x_m|< \frac{\varepsilon}{2},\ \forall n,m\geq N \end{flalign*}
+        Find $k\geq N$ such that $|x_{n_k}-L|<\frac{\varepsilon}{2}$. Now
+        \begin{flalign*} |x_n-L| &= |x_n-x_{n_k}+x_{n_k}-L| \\
+        &\leq |x_n-x_{n_k}| + |x_{n_k}+L| \\
+        &< \frac{\varepsilon}{2}+\frac{\varepsilon}{2} \end{flalign*}
+    \end{proof}
+    \begin{example}
+        \[x_n=\frac{1}{n}\text{ in }(0,1)\]\vspace*{-2em}
+        \begin{flalign*}
+            |x_n-x_m| &= |\frac{1}{n}-\frac{1}{m}| \\
+            &= | \frac{m-n}{mn} \to 0 \text{ as } m,n\to\infty
+        \end{flalign*}
+    \end{example}
+
+    \chapter*{lecture 28 march 22}
+    A function $f:A\to \R$ is boudned if $\exists M>0$ such taht $|f(x)|\leq M \forall x\in A$
+
+    \begin{theorem}
+        Let $f:[a,b]\to \R$ be continuous. Then $f$ is bounded.
+    \end{theorem}\vspace{-1.25em}
+    \begin{proof}
+        Assume $f$ is \ul{not} bounded. That is, for each $n\in\N, \exists x_n\in[a,b]$ such that $|f(x_n)|\geq n$. \\
+        By B-W theorem, $\exists \xnkp$ such that $x_{n_k}\to x, x\in[a,b]$. \\
+        If $f$ is continuous, then we would have that $f\xnkp$ converges. \\
+        This means $|f\xnkp|$ is bounded, but $|f\xnkp|\geq n_k \geq k$, a contradiction. \\
+        Taking the contrapositive gives the theorem.
+    \end{proof}
+
+    \begin{theorem}
+        Let $f:[a,b]\to \R$ be continuous. Then $\exists x_{min}, x_{max} \in [a.b]$ such that $f(x_{max})\geq f(x)$ and $f(x_{min})\leq f(x)$, $\forall x\in[a,b]$
+    \end{theorem}\vspace{-1.25em}
+    \begin{proof}
+        $S=\{f(x):x\in[a,b]\}=f([a,b])$ is a bounded set, nonempty.\\
+        Thus $s=\sup(S)$, $l=\inf(S)$ exist. \\
+        For $n\in \N, s-\frac{1}{n}<s$, so $\exists f(x_n)\in S$ such that $s-\frac{1}{n}<f(x_n)<s$.\\
+        $\xn$ is bounded, so $\exists\xnkp$ such that $\xnk \to x_{max}\in[a,b]$\\
+        Now, $f(x_{max})=\lim_{k\to\infty}f\xnkp\leq s$\\
+        Also $\lim_{k\to\infty}f\xnkp\leq s$ \\
+        % EFTS: take care of f(x_min) case
+    \end{proof}
+
+    \begin{theorem}[(Location of Roots)]
+        suppose $f:[a,b]\to\R$ continuous and either $f(a)<0<f(b)$ \ul{or} $f(a)>0>f(b)$.
+        Then $\exists c\in(a,b)$ such that $f(c)=0$.
+    \end{theorem}
+    \begin{proof}
+        Set $I_1=[a_1,b_1]=[a,b]$. Assume $f(a)<0<f(b)$ \\
+        Let $p_1=\frac{a_1+b_1}{2}$. \\
+        If $f(p_1)=0$, done. Otherwise, $f(p_1) > 0$ or $f(p_1) < 0$\\
+        If $f(p_1) > 0$, set $I_2=[a_2,b_2]=[a_1,p_1]$ so $f(a_1)<0<f(b_2)$ \\
+        If $f(p_1) < 0$, set $I_2=[a_2,b_2]=[p_1,b_1]$ so $f(a_2)<0<f(b_2)$ \\
+        Now, set $p_2=\frac{a_2+b_2}{2}$\\
+        If $f(p_2)=0$, done. Otherwise, $f(p_2) > 0$ or $f(p_1) < 0$.\\
+        etc etc. \\
+        continuing inductively in this manner has two possible outcomes:\\
+        1. $f(p_n)=0$ for some $n$, done.\\
+        2. $f(p_n)\neq 0, \forall n$\\
+        By nested intervals thm, $\bigcap_{n=1}^{\infty}I_n=\{c\}$, since the lengths of the $I_n$'s goes to zero. \\
+        In fact, $a_n\to c$ and $b_n\to c$ as $n\to\infty$. \\
+        Since $f$ is continuous, $f(c)=\lim_{n\to \infty}f(a_n)\leq 0$ since $f(a_n)<0$\\
+        Also, $f(c)=\lim_{n\to \infty}f(b_n)\geq 0$ since $f(b_n)>0$. \\
+        $\implies f(c)=0$
+    \end{proof}
+
+    \begin{theorem}[(Intermediate Value)]
+        suppose $f:[a,b]\to\R$. If $f(a)<k<f(b)$ and $f$ continuous then $\exists c\in(a,b)$ such that $f(c)=k$.
+    \end{theorem}
+    \begin{proof}
+        $f(a)-k<0<f(b)-k$\\
+        $g(x)=f(x)-k$ continuous.\\
+    \end{proof}
+
+    \section*{5.4 --- Uniform Continuity}
+    \begin{definition}
+        Let $f:A\to\R$. $f$ is \ul{uniformly continuous} on $A$ if $\forall \varepsilon > 0,$ $\exists \delta > 0$ such that $\left|f(x)-f(y)\right|<\varepsilon$ if $|x-y|<\delta$, $\forall x,y\in A$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $f:A\to\R$. The following are equivalent:
+        \begin{enumerate}[label=(\roman*)]
+            \item $f$ is not uniformly continuous on $A$
+            \item $\exists \varepsilon_0 > 0$ such that $\forall \delta > 0$, $\exists x,y\in A$ such that $|x-y|<\delta$ and $|f(x)-f(y)|\geq \varepsilon_0$.
+            \item $\exists \varepsilon_0 > 0$ and sequences $\xn, (u_n)$ in $A$ such that $|x_n-u_n|\to 0$ and $|f\xn-f(u_n)|\geq \varepsilon_0|$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{example}
+        $f(x)=\frac{1}{x}$. Choose $\varepsilon_0=1$. \vspace{-1em}
+        \[x_n=\frac{1}{n}\quad u_n=\frac{1}{n+1}\]
+        \vspace{-1em}
+        \[|f\xn-f(u_n)|=|n-(n+1)|=1\geq \varepsilon_0\]
+        $|x_n-u_n|=|\frac{1}{n}-\frac{1}{n+1}|\leq \frac{1}{n}+\frac{1}{n+1}\to 0$
+    \end{example}
+
+    \begin{theorem}
+        If $f:[a,b]\to\R$ is continuous then it is uniformly continuous on $[a, b]$.
+    \end{theorem}
+    \begin{proof}
+        Suppose $f$ \ul{not} uniformly conitinuous, so that $\exists \xn, (u_n)$ in $[a,b]$ and $\varepsilon_0 >0$ such that $|x_n-u_n|\to 0$ and $|f(x_n)-f(u_n)|\geq \varepsilon_0$. By the Bolzano-Weierstrauss Theorem, $\exists \xnkp$ such that $\xnk\to z\in[a,b]$.\\
+        Also, $|u_{n_k}-z|\leq |u_{n_k}-x_{n_k}|+|x_{n_k}-z| \to 0$. \\
+        Thus, $u_{n_k}$ converges to 0. If $f$ were cotinuous, we woul dhave that
+        \[f\xnkp\to f(z)\qquad\qquad f(u_{n_k})\to f(z)\]
+        Given $\frac{\varepsilon_0}{2}$, can find $K\in\N$ such that
+        \[|f\xnkp-f(u_{n_k})|\leq|f\xnkp-f(z)|+|f(z)-f(u_{n_k})| < \frac{\varepsilon_0}{2}+\frac{\varepsilon_0}{2}=\varepsilon_0,\ \forall k\in K.\]
+    \end{proof}
+
+    \section*{Lipschitz Functions}
+    \begin{definition}
+        A function $f:A\to\R$ is Lipschitz with constant $K > 0$ if
+        \[|f(x)-f(y)|<k|x-y|,\ \forall x,y\in A\]
+        \[\left(\frac{|f(x)-f(y)|}{|x-y|}\right)\]
+    \end{definition}
+
+    \begin{example}
+        Consider $f(x)=x^2$ on $A=(0,2)$. \\
+        \begin{flalign}
+            |f(x)-f(y)|&=|x^2-y^2|\\
+            &=|x+y||x-y|\\
+            &\leq 8|x-y|
+        \end{flalign}
+    \end{example}
+
+    \begin{theorem}
+        If $f$ is Lipschitz with constant $K$ on $A$, then $f$ is uniformly continuous on $A$.
+    \end{theorem}
+    \begin{proof}
+        Let $\varepsilon >0$ be given. Set $\delta = \frac{\varepsilon}{K}$. Then, the distance from $|f(x)-f(y)|\leq K|x-y| < K\frac{\varepsilon}{K}=\varepsilon$ if $|x-y|<\delta$.
+    \end{proof}
+\begin{definition}
+    If $f:A\to\R$ and $B\supseteq A$, then $g:B\to\R$ is an \ul{extension} of $f$ if $g(x)=f(x) \forall x\in A$
+\end{definition}
+\begin{definition}
+    If $f$ and $g$ are continuous on $A$ adn $B$, respectively, we say $g$ is a \ul{continuous extension} of $f$.
+\end{definition}
+\end{document}
