@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fleqn}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{systeme}
+
+% Fundamental sets
+\newcommand{\N}{\mathbb{N}}  % Natural
+\newcommand{\R}{\mathbb{R}}  % Real
+\newcommand{\C}{\mathbb{C}}  % Complex
+\newcommand{\Q}{\mathbb{Q}}  % Rational
+\newcommand{\Z}{\mathbb{Z}}  % Integers
+
+\input{/Users/joshpark/purdue/tex template/mymacros.tex}
+
+% Misc helpers
+\setlength{\parskip}{1em}
+
+\newcommand{\xn}{(x_n)}
+\newcommand{\xnk}{(x_{n_k})}
+
+% Title
+\author{Josh Park}
+\date{\vspace{-1em}Spring 2024}
+\title{MA 34100 Homework 7\vspace{-1em}}
+
+% Document
+\begin{document}
+    \maketitle
+    \subsection*{Exercise A: Let $f:[a,b]\to\R$ be a continuous function. Prove there exists a point $x_{min}\in[a,b]$ such that $f(x_{min})\leq f(x)$ for every $x\in[a,b]$.}
+    $f$ is given to be continuous on, so it is closed and bounded on $[a,b]$.
+    Suppose we have that the greatest lower bound for $f$ is $m$.
+    Also assume that there is no value $c\in[a,b]$ such that $f(c)=m$.
+    Then, $f(x)>m$ for all $x\in[a,b]$.
+    If we define a second function $g(x)=\frac{1}{f(x)-m}$, we can see that $g(x)>0$ for any $x\in[a,b]$.
+    Thus, $g(x)$ must also be bounded on the interval $[a,b]$.
+    Then, there must exist some $\alpha>0$ such that $g(x)\leq \alpha$ for all $x\in[a,b]$.
+    This gives us that $\frac{1}{f(x)-m}\leq\alpha \implies f(x)\geq\frac{1}{\alpha}-m$.
+    However, this contradicts that $m$ is our greatest lower bound.
+    Thus, our assumption that there does not exist some value $c\in[a,b]$ with $f(c)=m$ must be false.
+    That is, there exists some $c=x_{min}\in[a,b]$ with $f(x_min)\leq f(x)$ for all $x\in[a,b]$.
+
+    \subsection*{Exercise 4.1.1}
+    \begin{enumerate}[label=\alph*)]
+        \item If $\abs{x-1}\leq 1$, then \begin{flalign}
+        \abs{x+1}&\leq 3\\
+        \abs{x+1}\abs{x-1}&\leq 3\abs{x-1}\\
+        \abs{x^2-1}&\leq 3\abs{x-1}
+        \end{flalign}
+        so $\abs{x-1} < \frac{1}{6}$ satisfies the inequality.
+        \item $\abs{x-1} < 1$
+        \item $\abs{x-1} < \frac{1}{3n}$
+        \item $\abs{x-1} < \frac{1}{7n}$
+    \end{enumerate}
+
+    \subsection*{Exercise 4.1.9}
+    \begin{enumerate}
+        \item[b)] Let $\veps > 0$.
+        Let $\delta =\min\{1, \veps\}$.
+        Suppose $0<\abs{x-1}<\delta$.
+        Then
+        \begin{flalign}
+            \abs{\frac{x}{1+x}-\frac{1}{2}} &= \abs{\frac{2x-(1+x)}{2+2x}} \\
+            &= \frac{\abs{x-1}}{2\abs{x+1}}\\
+            &< \frac{\delta}{2} \\
+            &< \delta < \veps
+        \end{flalign}
+        \item[d)] Let $\veps > 0$.
+        Let $\delta = \min\{1,\frac{2\veps}{3}\}$.
+        Suppose $0<\abs{x-1}<\delta$.
+        Then
+        \begin{flalign}
+            \abs{\frac{x^2-x+1}{x+1}-\frac{1}{2}} &= \abs{\frac{(2x^2-2+2)-(x+1)}{2x+2}}\\
+            &= \abs{\frac{2x^2-3x+1}{2x+2}}\\
+            &= \frac{\abs{2x-1}}{2\abs{x+1}}\abs{x-1}\\
+            &< \frac{\abs{2(2)-1}}{2\abs{0+1}}\abs{x-1}\\
+            &< \frac{3}{2}\delta\\
+            &\leq \frac{3}{2}\frac{2\veps}{3}=\veps
+        \end{flalign}
+    \end{enumerate}
+
+    \subsection*{Exercise 4.1.10}
+    \begin{enumerate}
+        \item[a)] Let $\veps > 0$.
+        Let $\delta = \min\{1,\frac{\veps}{9}\}$.
+        Suppose $0<\abs{x-2}<\delta$.
+        Then
+        \begin{flalign}
+            \abs{x^2+4x-12} &= \abs{x+6}\abs{x-2}\\
+            &= \abs{x+6}\delta \\
+            &< 9\delta\\
+            &\leq 9\frac{\veps}{9}=\veps
+        \end{flalign}
+    \end{enumerate}
+
+    \subsection*{Exercise 4.1.12}
+    \begin{enumerate}
+        \item[b)] Consider the sequence $(a_n)=x^{-2}$. Then \[f(a_n)=\frac{1}{\sqrt{\frac{1}{x^2}}}=x,\] which certainly converges at $x=0$.
+    \end{enumerate}
+
+    \subsection*{Exercise 4.3.5}
+    \begin{enumerate}
+        \item[b)] The limit does not exist, as the left hand limit and the right hand limit diverge to $-\infty$ and $\infty$ respectively.
+        We begin by proving $\lim_{x\to 1^-}\frac{x}{x-1}=-\infty$. \\
+        Let $M<0$. Set $\delta=-\frac{1}{M}$. Suppose $0<1-x<\delta$. Then
+        \begin{flalign}
+            \frac{x}{x-1} &= x\frac{1}{x-1} \\
+            &< -x\frac{1}{\delta} \\
+            &< -\frac{1}{\delta} \\
+            &= -\frac{1}{-\frac{1}{M}} = M
+        \end{flalign}
+        Next, we wish to prove $\lim_{x\to 1^+}\frac{x}{x-1}=\infty$. \\
+        Let $N>0$. Set $\delta=\frac{1}{M}$. Suppose $0<x-1<\delta$. Then
+        \begin{flalign}
+            \frac{x}{x-1} &= x\frac{1}{x-1} \\
+            &> x\frac{1}{\delta} \\
+            &> \frac{1}{\frac{1}{M}} = M
+        \end{flalign}
+        We conclude that the limit of $\frac{x}{x-1}$ can not be a real number, nor can it be
+        \item[d)] The function $\frac{x+2}{\sqrt{x}}$ is bounded below by $\sqrt{x}$, and as $x\to \infty$, $\sqrt{x}\to\infty$. So, $\lim_{x\to\infty}\frac{x+2}{\sqrt{x}}=\infty$.
+    \end{enumerate}
+
+    \subsection*{Exercise 5.1.3}
+    The function $f$ is given to be continuous at $b$, so given some $\veps>0$, there exists some $\alpha>0$ such that $b-\alpha<x<b \implies \abs{f(x)-f(b)}<\veps$. Likewise there exists some $\beta > 0$ such that $b<x<b+\beta\implies \abs{g(x)-g(b)}<\veps$. Setting $\delta=\min\{\alpha, \beta\}$ allows $\abs{h(x)-h(b)}<\veps$ when $\abs{x-b}<\delta$, and thus $h(x)$ is continuous at $b$.
+
+    \subsection*{Exercise 5.1.8}
+    The function $f$ is given to be continuous for all $x\in\R$, so $f(x)=\lim(f(x_n))=0 \implies x\in S$.
+
+    \subsection*{Exercise 5.1.10}
+    $\abs{\abs{x}-\abs{y}}\leq \abs{x-y}$, so for any $\veps > 0$, there exists some $\delta >0$ with $\abs{x-t}<\delta\implies \abs{\abs{f(x)}-\abs{f(t)}}\leq\abs{f(x)-f(t)}<\veps$.
+\end{document}
