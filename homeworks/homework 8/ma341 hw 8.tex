@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amsthm, amssymb}
+\usepackage{enumitem}
+\usepackage{fleqn}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{setspace}
+\usepackage{systeme}
+
+% Fundamental sets
+\newcommand{\N}{\mathbb{N}}  % Natural
+\newcommand{\R}{\mathbb{R}}  % Real
+\newcommand{\C}{\mathbb{C}}  % Complex
+\newcommand{\Q}{\mathbb{Q}}  % Rational
+\newcommand{\Z}{\mathbb{Z}}  % Integers
+
+\input{/Users/joshpark/purdue/tex template/mymacros.tex}
+
+% Misc helpers
+\newcommand{\xn}{(x_n)}
+\newcommand{\xnk}{(x_{n_k})}
+
+% Title
+\author{Josh Park}
+\date{\vspace{-1em}Spring 2024\vspace{-1em}}
+\title{MA 34100 Homework 7\vspace{-1em}}
+
+\setlength{\parskip}{1em}
+\parindent=0em
+\onehalfspacing
+
+% Document
+\begin{document}
+\maketitle
+\section*{Exercise 5.2.1}
+\begin{enumerate}[label=(\alph*)]
+    \item $\begin{aligned} f(x)=\frac{x^2+2x+1}{x^2+1} \qquad (x\in\R)\end{aligned}$
+
+    Notice $f$ is a rational function. \\
+    Ex 5.2.3(a) gives us that any rational function is continuous for every $x\in\R$ for which it is defined. \\
+    The domain of $f$ is $\R$, so it follows that $f(x)$ is continuous on $\R$.
+
+    \item $\begin{aligned} g(x)=\sqrt{x+\sqrt{x}} \qquad (x\geq 0) \end{aligned}$
+
+    Let $f(x)=x$ for all $x\in\R$ and $h(x)=\sqrt(x)$ for $x\geq 0$.\\
+    It is trivial that $f(x)$ is continuous on $\R$, so by Thm 5.2.5(b) $h(x)$ is continuous on $\R^+\cup\{0\}$. \\
+    We know that $(f+h)(x)=f(x)+h(x)=x+\sqrt{x},$ so from Thm 5.2.2(a) it follows that $f+h$ is continuous on $\R^+\cup\{0\}$. \\
+    Then Thm 5.2.7 gives that $g(x)=h\circ(f+h)$ is continuous on $\R^+\cup\{0\}$. \\
+
+    \item $\begin{aligned} h(x)=\frac{\sqrt{1+\abs{\sin x}}}{x} \qquad (x\neq 0)\end{aligned}$
+
+    Define $\phi(x)=x$ for $x\in\R$, $\gamma(x)=\sin(x)$ for $x\in\R$, $\mu(x)=1+x$ for $x\in\R$, $\chi(x)=\abs{x}$ for $x\in\R$, and $\eta(x)=\sqrt{x}$. \\
+    Then, we can write
+    $\begin{aligned}[t] h=\frac{\eta\circ(\mu\circ(\chi\circ(\gamma\circ\phi)))}{\phi}. \end{aligned}$ \\
+    We know $\phi$, $\gamma$, $\mu$, and $\chi$ are continuous over $\R$, so by Thm 5.2.7 $\mu\circ(\chi\circ\gamma)$ is continuous over $\R$. \\
+    We also know that the domain of $\eta$ is $\R^+\cup\{0\}$ and the range of $\mu\circ(\chi\circ\gamma)$ is a subset of $\R^+\cup\{0\}$. \\
+    So, the range of $\eta\circ\mu\circ(\chi\circ(\gamma\circ\phi))$ is $\R$. \\
+    So, $h(x)$ is continuous on $\R\setminus \{0\}$ by Thm 5.2.2(b).
+
+    \item $\begin{aligned} k(x)=\cos\sqrt{1+x^2} \qquad (x\in\R)\end{aligned}$
+
+    Let $\alpha(x)=x^2$ for $x\in\R$, $\beta(x)=1+x$ for $x\in\R$, $\gamma(x)=\sqrt{x}$ for $x\geq 0$, and $\epsilon(x)=\cos(x)$ for $x\in\R$. \\
+    We know $\alpha$ is continuous on $\R$, so from Thm 5.2.7 it follows that $\beta\circ\alpha$ is continuous on $\R$. \\
+    Notice that the domain of $\gamma$ is $\R^+\cup\{0\}$, of which the range of $\beta\circ\alpha$ is a subset. \\
+    So, $\gamma\circ(\beta\circ\alpha)$ is continuous on $\R$. \\
+    Then from Thm 5.2.7 it follows that $\eta\circ(\gamma\circ(\beta\circ\alpha))$ is continuous on $\R$.
+\end{enumerate}
+
+\section*{Exercise 5.2.3}\vspace{-1em}
+    Consider the functions $f$ and $g$ where
+    \begin{align}
+        &f(x)=\begin{cases}
+            1 & \text{ if } x\in\Q \\
+            0 & \text{ if } x\in\R\setminus\Q
+        \end{cases}
+        &g(x)=\begin{cases}
+            0 & \text{ if } x\in\Q \\
+            1 & \text{ if } x\in\R\setminus\Q
+        \end{cases}
+    \end{align}
+    Notice they are both discontinuous everywhere on $\R$. We can see that
+    \begin{align}
+        (f+g)(x)=\begin{cases}
+            1+0 & \text{ if } x\in\Q \\
+            0+1 & \text{ if } x\in\R\setminus\Q
+        \end{cases} \implies (f+g)(x)=1 \quad \forall x\in\R
+    \end{align}
+    and
+    \begin{align}
+        fg(x)=\begin{cases}
+            0\cdot 1 & \text{ if } x\in\Q \\
+            1\cdot 0 & \text{ if } x\in\R\setminus\Q
+        \end{cases} \implies fg(x)=0 \quad \forall x\in\R,
+    \end{align}
+    so $(f+g)$ and $fg$ are both continuous for any $c\in\R$.
+    \vspace{-1em}
+
+\section*{Exercise 5.2.7}\vspace{-1em}
+    Consider the function
+    \begin{align}
+        f(x)=\begin{cases}
+            1 & \text{ if } x\in\Q \\
+            -1 & \text{ if } x\in\R\setminus\Q
+        \end{cases},
+    \end{align}
+    where $f$ is known to be everywhere discontinuous on $\R$ (and subsequently on [0,1]). Then,
+    \begin{align}
+        \abs{f(x)}=\begin{cases}
+            1 & \text{ if } x\in\Q \\
+            1 & \text{ if } x\in\R\setminus\Q
+        \end{cases}.
+    \end{align}
+    Notice that $\abs{f(x)}=1$ for all $x\in\R$, so it is trivially continuous on [0,1].
+    \vspace{-1em}
+
+\section*{Exercise 5.2.8}\vspace{-1em}
+    True. Let $c\in\R\setminus\Q$. By the density theorem, there exists a sequence of rational numbers $(x_n)$ such that $(x_n)\to c$. Then, $r_n\in\R\setminus\Q$. We are given that $f$ and $g$ are both continuous on $\R$, so by the Sequential Criterion for continuity:
+    \begin{align} &(f(x_n))\to f(c) &(g(x_n))\to g(c).\end{align}
+    Then, for all $n\in\N$, we have that $f(x_n)=g(x_n)$. This implies that
+    \begin{align} \lim_{n\to\infty}f(x_n) = \lim_{n\to\infty}g(x_n) \quad\implies\quad f(c)=g(c). \end{align}
+    Since $c$ is an arbitrary element of $\R\setminus\Q$, we can deduce that
+    \begin{align} f(c)=g(c) \quad \forall c\in\R\setminus\Q\implies f(n)=g(n) \quad \forall n\in\R \end{align}
+    \vspace{-1em}
+
+\section*{Exercise 5.3.3}\vspace{-1em}
+    $f$ is continuous on $I \implies \abs{f}$ is continuous on $I$. \\
+    Let $\alpha =\inf|f|(I)$. \\
+    By the Maximum-Minimum Thm, there exists some $c\in I$ such that $\abs{f}(c)=\abs{f(c)}=\alpha$. \\
+    Now, we conjecture that $\alpha=0$. For contradiction, we assume $\alpha\neq 0$. \vspace{-1em}
+    \begin{proof}
+        We know that for any $x\in I$, there exists some $y\in I$ with the property that $\abs{f(y)}\leq\frac{1}{2}\abs{f(c)}=\frac{1}{2}m$. \\
+        Then, $\alpha\neq 0\implies \alpha>0\implies \abs{f(y)} < m = \inf \abs{f}(I)$. \\
+        However this is a contradiction by definition of infimum. \\
+        Thus our assumption that $\alpha\neq 0$ must be false.
+    \end{proof}\vspace{-1em}
+    So, there necessarily exists some $c\in I$ with $f(c)=0$.
+    \vspace{-1em}
+
+\section*{Exercise 5.3.17}\vspace{-1em}
+    Yes, $f:[0,1]\to\R$ is a constant function. \vspace{-1em}
+    \begin{proof}
+    Suppose for contradiction that $f$ was not a constant function. \\
+    Then, there must exist numbers $\alpha, \beta \in[0,1]$ such that $f(\alpha)\neq f(\beta)$. \\
+    Without loss of generality, let $f(\alpha)<f(\beta)$. \\
+    By the Density Theorem, there exists some $\gamma\in\R\setminus\Q$ such that $f(\alpha)<\gamma<f(\beta)$. \\
+    By the Intermediate Value Theorem, there exists some $\delta\in[0,1]$ with $f(\delta)=\gamma$. \\
+    We know $f$ only produces rational numbers so $\gamma\in\Q$. \\
+    However, this contradicts with $\gamma\in\R\setminus\Q$. \\
+    Thus our assumption that $f$ is not a constnat function must be false.
+    Thus $f$ is necessarily a constant function.
+    \end{proof}
+
+\section*{Exercise 5.4.2}\vspace{-1em}
+    Let $\veps>0$ be given and let $\delta=\frac{\varepsilon}{2}$. \\
+    Then for all $x,y\in A$ if $\abs{x-y}<\delta$, then
+    \begin{align}
+        \abs{f(x)-f(y)} &= \abs{\frac{1}{x^2}-\frac{1}{u^2}} \\
+            &= \lt(\frac{y+x}{x^2y^2}\rt)\abs{y-x} \\
+            &= \lt(\frac{1}{x^2y}+\frac{1}{xy^2}\rt)\abs{y-x}\\
+            &\leq 2\abs{x-u}\\
+            &< 2\frac{\varepsilon}{2}=\veps
+    \end{align}
+    So $f$ is uniformly continuous over $A$. \\
+    For $B$, suppose we have sequences $x_n=\frac{1}{n}$ and $y_n=\frac{1}{n+1}$. \\
+    It follows then that $\abs{x_n-y_n}\to 0$, but
+    \begin{align}
+        \abs{f(x_n)-f(y_n)} &= \abs{n^2-n^2+2n+1} \\
+            &= \abs{2n+1} \geq 1 \text{ for all $n$}
+    \end{align}
+    Thus $f$ is not uniformly convergent on $B$.
+
+\section*{Exercise 5.4.5}\vspace{-1em}
+    Let $\abs{x-y}<\min\lt\{\delta_f(\frac{\varepsilon}{2}),\delta_g(\frac{\varepsilon}{2})\rt\}$. Then,
+    \begin{align}
+        \abs{(f+g)(x)-(f+g)(y)} &= \abs{(f(x)+g(x))-(f(y)+g(y))} \\
+        &\leq \abs{f(x)+f(y)} + \abs{g(x)+g(y)} \\
+        &< \frac{\varepsilon}{2}+\frac{\varepsilon}{2} = \varepsilon
+    \end{align}
+
+\section*{Exercise 5.4.6}\vspace{-1em}
+    Let $\abs{x-y}<\min\lt\{\delta_f(\frac{\varepsilon}{2M}),\delta_g(\frac{\varepsilon}{2M})\rt\}$ and let $M$ be an upper bound for $f$ and $g$. Then,
+    \begin{align}
+        \abs{(fg)(x)-(fg)(y)} &= \abs{f(x)g(x)-f(x)g(y)+f(y)g(x)-f(y)g(y)} \\
+            &= \abs{f(x)g(x)-f(x)g(y)}+\abs{f(y)g(x)-f(y)g(y)} \\
+            &= \abs{f(x)}\abs{g(x)-g(y)}+\abs{g(y)}\abs{f(x)-f(y)} \\
+            &\leq M\abs{g(x)-g(y)}+M\abs{f(x)-f(y)} \\
+            &\leq M\frac{\veps}{2M}+M\frac{\veps}{2M} \\
+            &\leq \frac{\varepsilon}{2}+\frac{\varepsilon}{2} = \varepsilon
+    \end{align}
+
+\end{document}
