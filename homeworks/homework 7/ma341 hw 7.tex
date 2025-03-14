@@ -14,7 +14,7 @@
 
 % Fundamental sets
 \newcommand{\N}{\mathbb{N}}  % Natural
-\newcommand{\R}{\mathbb{R}}  % Real
+\newcommand{\bbR}{\mathbb{R}}  % Real
 \newcommand{\C}{\mathbb{C}}  % Complex
 \newcommand{\Q}{\mathbb{Q}}  % Rational
 \newcommand{\Z}{\mathbb{Z}}  % Integers
@@ -35,7 +35,7 @@
 % Document
 \begin{document}
     \maketitle
-    \subsection*{Exercise A: Let $f:[a,b]\to\R$ be a continuous function. Prove there exists a point $x_{min}\in[a,b]$ such that $f(x_{min})\leq f(x)$ for every $x\in[a,b]$.}
+    \subsection*{Exercise A: Let $f:[a,b]\to\bbR$ be a continuous function. Prove there exists a point $x_{min}\in[a,b]$ such that $f(x_{min})\leq f(x)$ for every $x\in[a,b]$.}
     $f$ is given to be continuous on, so it is closed and bounded on $[a,b]$.
     Suppose we have that the greatest lower bound for $f$ is $m$.
     Also assume that there is no value $c\in[a,b]$ such that $f(c)=m$.
@@ -132,7 +132,7 @@
     The function $f$ is given to be continuous at $b$, so given some $\veps>0$, there exists some $\alpha>0$ such that $b-\alpha<x<b \implies \abs{f(x)-f(b)}<\veps$. Likewise there exists some $\beta > 0$ such that $b<x<b+\beta\implies \abs{g(x)-g(b)}<\veps$. Setting $\delta=\min\{\alpha, \beta\}$ allows $\abs{h(x)-h(b)}<\veps$ when $\abs{x-b}<\delta$, and thus $h(x)$ is continuous at $b$.
 
     \subsection*{Exercise 5.1.8}
-    The function $f$ is given to be continuous for all $x\in\R$, so $f(x)=\lim(f(x_n))=0 \implies x\in S$.
+    The function $f$ is given to be continuous for all $x\in\bbR$, so $f(x)=\lim(f(x_n))=0 \implies x\in S$.
 
     \subsection*{Exercise 5.1.10}
     $\abs{\abs{x}-\abs{y}}\leq \abs{x-y}$, so for any $\veps > 0$, there exists some $\delta >0$ with $\abs{x-t}<\delta\implies \abs{\abs{f(x)}-\abs{f(t)}}\leq\abs{f(x)-f(t)}<\veps$.

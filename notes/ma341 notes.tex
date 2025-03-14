@@ -19,7 +19,7 @@
 % Macros
     % Fundamental sets
     \newcommand{\N}{\mathbb{N}}  % Natural
-    \newcommand{\R}{\mathbb{R}}  % Real
+    \newcommand{\bbR}{\mathbb{R}}  % Real
     \newcommand{\C}{\mathbb{C}}  % Complex
     \newcommand{\Q}{\mathbb{Q}}  % Rational
     \newcommand{\Z}{\mathbb{Z}}  % Integers
@@ -119,7 +119,7 @@
     % \section*{lecture 6}
     % \section*{lecture 7}
     \section*{lecture 8}
-    Def: Let $A \subseteq \R$ be nonemppty. $s \in \R$ is the supremum of $A$, written $s=\sup(A)$ if:
+    Def: Let $A \subseteq \bbR$ be nonemppty. $s \in \bbR$ is the supremum of $A$, written $s=\sup(A)$ if:
     \begin{enumerate}[label=(\roman*)] \vspace{-1em}
         \item $s$ is an upper bound for $A$
         \item If $s'$ is an upper bound for $A$, then $s \leq s'$
@@ -133,7 +133,7 @@
 
     Suppose that $s,r$ satisfy i) and ii) in def of sup. Then $s \leq r$ and $r \leq s$. So $s=r$.\\
     i.e. the supremum, when it exists, is unique (same for infimum)
-    \[s=\sup(A), \;A \subseteq \R,\; A \neq \emptyset \]
+    \[s=\sup(A), \;A \subseteq \bbR,\; A \neq \emptyset \]
     The following statements are equivalent to ii) below. \vspace{-1em} \begin{enumerate}
         \item[ii)'] If $z>s$, then $z$ is \tun{not} an upper bound for $A$.
         \item[ii)'] If $z < s$, then $\exists x \in A$ such that $x>z$.
@@ -149,16 +149,16 @@
     photo here feb 02 12:40pm
 
 
-    \textbf{Thm: $\R$ is uncountable.}
+    \textbf{Thm: $\bbR$ is uncountable.}
     \begin{proof}
         It is enough to show taht $[0,1]$ is uncountable.\\
         Suppose \tun{not}, i.e. $[0,1]=\{x_k \mid k \in \N\}$. $x_1$ lies somewhere between $0$ and $1$, so choose a nested interval $I_1=[a_1,b_1]$ such that $x_1 \not \in I_1$. Next, choose $I_2 \subseteq I$, such that $x_2 \not \in I_2$. Continuing in this fashion, find $I_n\subseteq I_{n-1}$ such that $x_1, x_2, \ldots, x_n\not\in\I_n$. By Thm, $\eta \in \bigcap_{n=1}^\infty I_n$, so $\eta \neq x_n$ for any $n, \eta\in [0,1]$. It follows that [0,1] is not countable.
     \end{proof}
 
     \section*{Section 3.1 --- Sequences}
-    \textbf{Def:} A sequence is a function $a:\N \to \R$ (usually written $f(n)=x_n$)
+    \textbf{Def:} A sequence is a function $a:\N \to \bbR$ (usually written $f(n)=x_n$)
 
-    \textbf{Ex: $x_n=b, b\in \R$}
+    \textbf{Ex: $x_n=b, b\in \bbR$}
 
     \textbf{Ex: $x_n=\frac{1}{2^n}$}
     \[\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \ldots\]
@@ -169,11 +169,11 @@
     \textbf{Ex: $x_1=1, x_{n+1}=\frac{1}{2}(x_n+\frac{2}{x_n})$}
 
 
-    \textbf{Def(WILL BE ON MIDTERM):} Let $(x_n)$ be a sequence. We say that the limit of $x_n$ is equal to some number $L \in \R$, written
+    \textbf{Def(WILL BE ON MIDTERM):} Let $(x_n)$ be a sequence. We say that the limit of $x_n$ is equal to some number $L \in \bbR$, written
     \[ \lim_{n\rightarrow\infty}x_n=L \]
     if $\forall \epsilon > 0, \exists N(\epsilon) \in \N$ such that $|x_n-L|<\epsilon$ whenever $n\geq N(\epsilon)$.
 
-    \textbf{Ex:} Let $x_n=b \quad \forall n, b \in \R$.
+    \textbf{Ex:} Let $x_n=b \quad \forall n, b \in \bbR$.
     \begin{enumerate}
         \item Let $\epsilon>0$ be given
         \item Analyze $|x_n-L|$
@@ -256,7 +256,7 @@
         \begin{flalign*}
             x_{n+1}=\frac{1}{4}(2x_n+3) &< \frac{1}{4}(2\cdot 2+3) = \frac{1}{4}(4+3) = \frac{7}{4} <2
         \end{flalign*}
-        Thus $x_n\rightarrow L\in \R$. \\
+        Thus $x_n\rightarrow L\in \bbR$. \\
         $L=\sup\{x_n\vert n\in\N\}$. \\
         L ``should'' satisfy $L=\frac{1}{4}(2L+3)$.\\
         Need to show \[\left| L - \frac{1}{4}(2L+3)\right| < \epsilon,\; \forall \epsilon > 0\]
@@ -355,7 +355,7 @@
     \end{proof}
 
     \section*{Limsup and Liminf}
-    Let $\xn$ be a bounded sequence. Consider $\mathbb{L}=\left\{l\in\R \; \vert\; \exists \xnkp \text{ s.t. } x_{n_k}\rightarrow l\right\}$
+    Let $\xn$ be a bounded sequence. Consider $\mathbb{L}=\left\{l\in\bbR \; \vert\; \exists \xnkp \text{ s.t. } x_{n_k}\rightarrow l\right\}$
 
     \dfn{$\mathbb{L}$ is the set of \emph{subsequential limits}.}
     By B-W, $\mathbb{L}\neq \emptyset,\; \mathbb{L}$ is bounded.
@@ -408,10 +408,10 @@
     \end{example}
 
     \section*{lecture 28 march 22}
-    A function $f:A\to \R$ is boudned if $\exists M>0$ such taht $|f(x)|\leq M \forall x\in A$
+    A function $f:A\to \bbR$ is boudned if $\exists M>0$ such taht $|f(x)|\leq M \forall x\in A$
 
     \begin{theorem}
-        Let $f:[a,b]\to \R$ be continuous. Then $f$ is bounded.
+        Let $f:[a,b]\to \bbR$ be continuous. Then $f$ is bounded.
     \end{theorem}\vspace{-1.25em}
     \begin{proof}
         Assume $f$ is \tun{not} bounded. That is, for each $n\in\N, \exists x_n\in[a,b]$ such that $|f(x_n)|\geq n$. \\
@@ -422,7 +422,7 @@
     \end{proof}
 
     \begin{theorem}
-        Let $f:[a,b]\to \R$ be continuous. Then $\exists x_{min}, x_{max} \in [a.b]$ such that $f(x_{max})\geq f(x)$ and $f(x_{min})\leq f(x)$, $\forall x\in[a,b]$
+        Let $f:[a,b]\to \bbR$ be continuous. Then $\exists x_{min}, x_{max} \in [a.b]$ such that $f(x_{max})\geq f(x)$ and $f(x_{min})\leq f(x)$, $\forall x\in[a,b]$
     \end{theorem}\vspace{-1.25em}
     \begin{proof}
         $S=\{f(x):x\in[a,b]\}=f([a,b])$ is a bounded set, nonempty.\\
@@ -435,7 +435,7 @@
     \end{proof}
 
     \begin{theorem}[(Location of Roots)]
-        suppose $f:[a,b]\to\R$ continuous and either $f(a)<0<f(b)$ \tun{or} $f(a)>0>f(b)$.
+        suppose $f:[a,b]\to\bbR$ continuous and either $f(a)<0<f(b)$ \tun{or} $f(a)>0>f(b)$.
         Then $\exists c\in(a,b)$ such that $f(c)=0$.
     \end{theorem}
     \begin{proof}
@@ -458,7 +458,7 @@
     \end{proof}
 
     \begin{theorem}[(Intermediate Value)]
-        suppose $f:[a,b]\to\R$. If $f(a)<k<f(b)$ and $f$ continuous then $\exists c\in(a,b)$ such that $f(c)=k$.
+        suppose $f:[a,b]\to\bbR$. If $f(a)<k<f(b)$ and $f$ continuous then $\exists c\in(a,b)$ such that $f(c)=k$.
     \end{theorem}
     \begin{proof}
         $f(a)-k<0<f(b)-k$\\
@@ -467,11 +467,11 @@
 
     \section*{5.4 --- Uniform Continuity}
     \begin{definition}
-        Let $f:A\to\R$. $f$ is \tun{uniformly continuous} on $A$ if $\forall \varepsilon > 0,$ $\exists \delta > 0$ such that $\left|f(x)-f(y)\right|<\varepsilon$ if $|x-y|<\delta$, $\forall x,y\in A$.
+        Let $f:A\to\bbR$. $f$ is \tun{uniformly continuous} on $A$ if $\forall \varepsilon > 0,$ $\exists \delta > 0$ such that $\left|f(x)-f(y)\right|<\varepsilon$ if $|x-y|<\delta$, $\forall x,y\in A$.
     \end{definition}
 
     \begin{theorem}
-        Let $f:A\to\R$. The following are equivalent:
+        Let $f:A\to\bbR$. The following are equivalent:
         \begin{enumerate}[label=(\roman*)]
             \item $f$ is not uniformly continuous on $A$
             \item $\exists \varepsilon_0 > 0$ such that $\forall \delta > 0$, $\exists x,y\in A$ such that $|x-y|<\delta$ and $|f(x)-f(y)|\geq \varepsilon_0$.
@@ -488,7 +488,7 @@
     \end{example}
 
     \begin{theorem}
-        If $f:[a,b]\to\R$ is continuous then it is uniformly continuous on $[a, b]$.
+        If $f:[a,b]\to\bbR$ is continuous then it is uniformly continuous on $[a, b]$.
     \end{theorem}
     \begin{proof}
         Suppose $f$ \tun{not} uniformly conitinuous, so that $\exists \xn, (u_n)$ in $[a,b]$ and $\varepsilon_0 >0$ such that $|x_n-u_n|\to 0$ and $|f(x_n)-f(u_n)|\geq \varepsilon_0$. By the Bolzano-Weierstrauss Theorem, $\exists \xnkp$ such that $\xnk\to z\in[a,b]$.\\
@@ -501,7 +501,7 @@
 
     \section*{Lipschitz Functions}
     \begin{definition}
-        A function $f:A\to\R$ is Lipschitz with constant $K > 0$ if
+        A function $f:A\to\bbR$ is Lipschitz with constant $K > 0$ if
         \[|f(x)-f(y)|<k|x-y|,\ \forall x,y\in A\]
         \[\left(\frac{|f(x)-f(y)|}{|x-y|}\right)\]
     \end{definition}
@@ -522,7 +522,7 @@
         Let $\varepsilon >0$ be given. Set $\delta = \frac{\varepsilon}{K}$. Then, the distance from $|f(x)-f(y)|\leq K|x-y| < K\frac{\varepsilon}{K}=\varepsilon$ if $|x-y|<\delta$.
     \end{proof}
 \begin{definition}
-    If $f:A\to\R$ and $B\supseteq A$, then $g:B\to\R$ is an \tun{extension} of $f$ if $g(x)=f(x) \forall x\in A$
+    If $f:A\to\bbR$ and $B\supseteq A$, then $g:B\to\bbR$ is an \tun{extension} of $f$ if $g(x)=f(x) \forall x\in A$
 \end{definition}
 \begin{definition}
     If $f$ and $g$ are continuous on $A$ adn $B$, respectively, we say $g$ is a \tun{continuous extension} of $f$.
@@ -531,7 +531,7 @@
 \section*{lecture 31 march 29}
 \section*{Step functions}
 \begin{theorem}
-    Let $f:[a,b]\to\R$ cts, $\varepsilon>0$. Then $\exists$ a step function $g:[0,1]\to\R$ such that \[\abs{f(x)-g(x)}<\varepsilon \forall x\in[0,1]\]
+    Let $f:[a,b]\to\bbR$ cts, $\varepsilon>0$. Then $\exists$ a step function $g:[0,1]\to\bbR$ such that \[\abs{f(x)-g(x)}<\varepsilon \forall x\in[0,1]\]
 \end{theorem}
 \begin{proof}
     $f$ is uniformy cts so $\exists\delta>0$ such that $\abs{x-y}<\delta\implies\abs{f(x)-f(y)} <\veps$.\\
@@ -542,15 +542,15 @@
 \end{proof}
 
 \begin{definition}
-    A function $f:[a,b]\to\R$ is piecewise linear if $\exists a=x_0<x_1<\cdots<x_n=b$ such that $f\vert_{[x_i-1,x_i]}$ is linear.
+    A function $f:[a,b]\to\bbR$ is piecewise linear if $\exists a=x_0<x_1<\cdots<x_n=b$ such that $f\vert_{[x_i-1,x_i]}$ is linear.
 \end{definition}
 
 \begin{theorem}
-    If $g:[a,b]\to\R$ is cts and $\veps>0$, $\exists$ a piecewise linear function $f:[a,b]\to\R$ such that $\abs{f(x)-g(x)}<\varepsilon, \forall x\in[a,b]$
+    If $g:[a,b]\to\bbR$ is cts and $\veps>0$, $\exists$ a piecewise linear function $f:[a,b]\to\bbR$ such that $\abs{f(x)-g(x)}<\varepsilon, \forall x\in[a,b]$
 \end{theorem}
 
 \begin{theorem}[(Weierstrauss Approximation Theorem)]
-    Let $f:[a,b]\to\R$ be cts and let $\veps>0$. Then $\exists$ some polynomial $p(x)=a_nx^n+\cdots+a_1x+a_0$ such that $\abs{p(x)-f(x)}<\varepsilon$, $\forall x\in[a,b]$.
+    Let $f:[a,b]\to\bbR$ be cts and let $\veps>0$. Then $\exists$ some polynomial $p(x)=a_nx^n+\cdots+a_1x+a_0$ such that $\abs{p(x)-f(x)}<\varepsilon$, $\forall x\in[a,b]$.
 \end{theorem}
 
 monotone functions; increasing if $x_1\leq x_2 \implies f(x_1)\leq f(x_2)$, etc.\\

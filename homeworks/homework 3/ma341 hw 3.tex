@@ -10,7 +10,7 @@
 
 % Fundamental sets
 \newcommand{\N}{\mathbb{N}}    % Natural
-\newcommand{\R}{\mathbb{R}}    % Real
+\newcommand{\bbR}{\mathbb{R}}    % Real
 \newcommand{\C}{\mathbb{C}}    % Complex
 \newcommand{\Q}{\mathbb{Q}}    % Rational
 \newcommand{\Z}{\mathbb{Z}}    % Integers
@@ -25,7 +25,7 @@
 \setlength{\parindent}{0pt}
 \maketitle
 \section*{Section 2.2}
-\subsection*{2.2.2) If $a, b \in \R$, show that $\vert a+ b \vert = \vert a \vert + \vert b \vert$ \emph{iff} $ab \geq{ 0}$}
+\subsection*{2.2.2) If $a, b \in \bbR$, show that $\vert a+ b \vert = \vert a \vert + \vert b \vert$ \emph{iff} $ab \geq{ 0}$}
     To show this, we must prove both directions of the biconditional statement.
     \subsubsection*{1) Assume $ab \geq 0$ is true.}
     This means that either $a$ and $b$ are both non-negative, or both non-positive. Then, we can split the proof into two cases.
@@ -52,7 +52,7 @@
         \begin{flalign} -3x \leq x-2 \implies x \geq \frac{1}{2}. \end{flalign}
         This gives us that $0 \geq x \geq \frac{1}{2}$, so the expression is valid for all $x \in[0, \frac{1}{2}]$.
 
-\subsection*{2.2.10) Find all $x \in \R$ that satisfy the following inequalities.}
+\subsection*{2.2.10) Find all $x \in \bbR$ that satisfy the following inequalities.}
     \subsubsection*{a) $\qquad |x-1| > |x+1|$}
         For the first case, consider $x > 1$. Then, $|x-1|=x-1$ and $|x+1|=x+1$, so the inequality becomes
         \begin{flalign} x-1 > x+1. \end{flalign}
@@ -67,7 +67,7 @@
         \begin{flalign} -x-x-1 < 2 \implies x > -\frac{3}{2}. \end{flalign}
         This gives us that $x \in(-\infty, 0)$. Thus, the solution set is $x \in(-\infty, \frac{1}{2}]$.
 
-\subsection*{2.2.12) Find all $x \in \R$ that satisfy the inequality $4 < |x+2|+|x-1| < 5$.}
+\subsection*{2.2.12) Find all $x \in \bbR$ that satisfy the inequality $4 < |x+2|+|x-1| < 5$.}
     For the first case, consider $x < -2$, so $|x+2|=-x-2$ and $|x-1|=-x+1$. Then, the inequality becomes
     \begin{flalign} 4 < -x-2-x+1 = -2x-1 < 5 \implies -3 < x < -\frac{5}{2}. \end{flalign}
     This gives that $x \in(-3, -\frac{5}{2})$. For the second case, consider $-2 \leq x < 1$, so $|x+2|=x+2$ and $|x-1|=-x+1$. Then, the inequality becomes
@@ -78,22 +78,22 @@
 
 \section*{Section 2.3}
 \subsection*{2.3.5) Find the infimum and supremum, if they exist, of the following sets.}
-    \subsubsection*{a) $\qquad A := \{x \in \R : \; 2x-5 > 0\}$}
+    \subsubsection*{a) $\qquad A := \{x \in \bbR : \; 2x-5 > 0\}$}
         $\inf{A}=-\frac{5}{2}$, and $\sup{A}$ does not exist.
-    \subsubsection*{b) $\qquad B := \{x \in \R : \; x+2 \geq x^2\}$}
+    \subsubsection*{b) $\qquad B := \{x \in \bbR : \; x+2 \geq x^2\}$}
         $\inf{B}=-2$, and $\sup{B}=2$.
-    \subsubsection*{c) $\qquad C := \{x \in \R : \; x < 1/x\}$}
+    \subsubsection*{c) $\qquad C := \{x \in \bbR : \; x < 1/x\}$}
         $\inf{C}=-1$, and $\sup{C}=1$.
-    \subsubsection*{d) $\qquad D := \{x \in \R : \; x^2-2x-5 < 0\}$}
+    \subsubsection*{d) $\qquad D := \{x \in \bbR : \; x^2-2x-5 < 0\}$}
         $\inf{D}=1-\sqrt{6}$, and $\sup{D}=1+\sqrt{6}$.
 
-\subsection*{2.3.6) Let $S$ be a nonempty subset of $\R$ that is bounded below. \\ Prove that $\inf{S}=-\sup{\{-s:s \in S\}}$}
-    If $S$ is a nonempty subset of $\R$ that is bounded below, then we know that $\inf{S}$ exists. Then, we can define the set $T:=\{-s:s \in S\}$. Obviously, $\inf{S} \in S$, so $-\inf{S}$ is in $T$. By definition of infimum, there are no smaller elements in $S$, so $-\inf{S}$ is the largest element in $T$. Thus, $-\inf{S}=\sup{T}$. Then, by definition of $T$, we know that $\sup{T}=\sup{\{-s:s \in S\}}$, so $\inf{S}=-\sup{\{-s:s \in S\}}$ \qed
+\subsection*{2.3.6) Let $S$ be a nonempty subset of $\bbR$ that is bounded below. \\ Prove that $\inf{S}=-\sup{\{-s:s \in S\}}$}
+    If $S$ is a nonempty subset of $\bbR$ that is bounded below, then we know that $\inf{S}$ exists. Then, we can define the set $T:=\{-s:s \in S\}$. Obviously, $\inf{S} \in S$, so $-\inf{S}$ is in $T$. By definition of infimum, there are no smaller elements in $S$, so $-\inf{S}$ is the largest element in $T$. Thus, $-\inf{S}=\sup{T}$. Then, by definition of $T$, we know that $\sup{T}=\sup{\{-s:s \in S\}}$, so $\inf{S}=-\sup{\{-s:s \in S\}}$ \qed
 
 \subsection*{2.3.10) \quad Show that if $A$ and $B$ are bounded subsets of R, then $A\cup B$ is a bounded set. Show that $\sup(A\cup B)=\sup\{\sup A, \sup B\}$.}
-    If $A$ and $B$ are bounded subsets of $\R$, then we know that $\sup{A}$ and $\sup{B}$ exist. Then, we can define the set $C:=A\cup B$. By definition of supremum, we know that $\sup{A}$ and $\sup{B}$ are the least upper bounds of $A$ and $B$, respectively. Then, by definition of least upper bound, we know that $\sup{A}$ and $\sup{B}$ are greater than or equal to all elements in $A$ and $B$, respectively. Thus, $\sup{A}$ and $\sup{B}$ are greater than or equal to all elements in $C$. Then, by definition of supremum, we know that $\sup{A}$ and $\sup{B}$ are the least upper bounds of $C$. Thus, $\sup{A\cup B}=\sup\{\sup{A}, \sup{B}\}$ \qed
+    If $A$ and $B$ are bounded subsets of $\bbR$, then we know that $\sup{A}$ and $\sup{B}$ exist. Then, we can define the set $C:=A\cup B$. By definition of supremum, we know that $\sup{A}$ and $\sup{B}$ are the least upper bounds of $A$ and $B$, respectively. Then, by definition of least upper bound, we know that $\sup{A}$ and $\sup{B}$ are greater than or equal to all elements in $A$ and $B$, respectively. Thus, $\sup{A}$ and $\sup{B}$ are greater than or equal to all elements in $C$. Then, by definition of supremum, we know that $\sup{A}$ and $\sup{B}$ are the least upper bounds of $C$. Thus, $\sup{A\cup B}=\sup\{\sup{A}, \sup{B}\}$ \qed
 
-\subsection*{2.3.11) \quad Let $S$ be a bounded set in $\R$ and let $S_0$ be a nonempty subset of $S$. Show that $\inf{S} \leq \inf{S_0} \leq \sup{S_0} \leq \sup{S}$}
-    If $S$ is a bounded set in $\R$, then we know that $\inf{S}$ and $\sup{S}$ exist. Then, we can define the set $T:=S_0$. By definition of infimum, we know that $\inf{S}$ is the greatest lower bound of $S$, so it is less than or equal to all elements in $S_0$. Then, by definition of infimum, we know that $\inf{S_0}$ is the greatest lower bound of $S_0$, so it is less than or equal to all elements in $S_0$. Then, by definition of supremum, we know that $\sup{S_0}$ is the least upper bound of $S_0$, so it is greater than or equal to all elements in $S_0$. Then, by definition of supremum, we know that $\sup{S}$ is the least upper bound of $S$, so it is greater than or equal to all elements in $S_0$. Thus, $\inf{S} \leq \inf{S_0} \leq \sup{S_0} \leq \sup{S}$. \qed
+\subsection*{2.3.11) \quad Let $S$ be a bounded set in $\bbR$ and let $S_0$ be a nonempty subset of $S$. Show that $\inf{S} \leq \inf{S_0} \leq \sup{S_0} \leq \sup{S}$}
+    If $S$ is a bounded set in $\bbR$, then we know that $\inf{S}$ and $\sup{S}$ exist. Then, we can define the set $T:=S_0$. By definition of infimum, we know that $\inf{S}$ is the greatest lower bound of $S$, so it is less than or equal to all elements in $S_0$. Then, by definition of infimum, we know that $\inf{S_0}$ is the greatest lower bound of $S_0$, so it is less than or equal to all elements in $S_0$. Then, by definition of supremum, we know that $\sup{S_0}$ is the least upper bound of $S_0$, so it is greater than or equal to all elements in $S_0$. Then, by definition of supremum, we know that $\sup{S}$ is the least upper bound of $S$, so it is greater than or equal to all elements in $S_0$. Thus, $\inf{S} \leq \inf{S_0} \leq \sup{S_0} \leq \sup{S}$. \qed
 
 \end{document}
