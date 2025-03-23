@@ -135,7 +135,7 @@
     i.e. the supremum, when it exists, is unique (same for infimum)
     \[s=\sup(A), \;A \subseteq \bbR,\; A \neq \emptyset \]
     The following statements are equivalent to ii) below. \vspace{-1em} \begin{enumerate}
-        \item[ii)'] If $z>s$, then $z$ is \tun{not} an upper bound for $A$.
+        \item[ii)'] If $z>s$, then $z$ is \uline{not} an upper bound for $A$.
         \item[ii)'] If $z < s$, then $\exists x \in A$ such that $x>z$.
     \end{enumerate}
 
@@ -152,7 +152,7 @@
     \textbf{Thm: $\bbR$ is uncountable.}
     \begin{proof}
         It is enough to show taht $[0,1]$ is uncountable.\\
-        Suppose \tun{not}, i.e. $[0,1]=\{x_k \mid k \in \N\}$. $x_1$ lies somewhere between $0$ and $1$, so choose a nested interval $I_1=[a_1,b_1]$ such that $x_1 \not \in I_1$. Next, choose $I_2 \subseteq I$, such that $x_2 \not \in I_2$. Continuing in this fashion, find $I_n\subseteq I_{n-1}$ such that $x_1, x_2, \ldots, x_n\not\in\I_n$. By Thm, $\eta \in \bigcap_{n=1}^\infty I_n$, so $\eta \neq x_n$ for any $n, \eta\in [0,1]$. It follows that [0,1] is not countable.
+        Suppose \uline{not}, i.e. $[0,1]=\{x_k \mid k \in \N\}$. $x_1$ lies somewhere between $0$ and $1$, so choose a nested interval $I_1=[a_1,b_1]$ such that $x_1 \not \in I_1$. Next, choose $I_2 \subseteq I$, such that $x_2 \not \in I_2$. Continuing in this fashion, find $I_n\subseteq I_{n-1}$ such that $x_1, x_2, \ldots, x_n\not\in\I_n$. By Thm, $\eta \in \bigcap_{n=1}^\infty I_n$, so $\eta \neq x_n$ for any $n, \eta\in [0,1]$. It follows that [0,1] is not countable.
     \end{proof}
 
     \section*{Section 3.1 --- Sequences}
@@ -414,7 +414,7 @@
         Let $f:[a,b]\to \bbR$ be continuous. Then $f$ is bounded.
     \end{theorem}\vspace{-1.25em}
     \begin{proof}
-        Assume $f$ is \tun{not} bounded. That is, for each $n\in\N, \exists x_n\in[a,b]$ such that $|f(x_n)|\geq n$. \\
+        Assume $f$ is \uline{not} bounded. That is, for each $n\in\N, \exists x_n\in[a,b]$ such that $|f(x_n)|\geq n$. \\
         By B-W theorem, $\exists \xnkp$ such that $x_{n_k}\to x, x\in[a,b]$. \\
         If $f$ is continuous, then we would have that $f\xnkp$ converges. \\
         This means $|f\xnkp|$ is bounded, but $|f\xnkp|\geq n_k \geq k$, a contradiction. \\
@@ -435,7 +435,7 @@
     \end{proof}
 
     \begin{theorem}[(Location of Roots)]
-        suppose $f:[a,b]\to\bbR$ continuous and either $f(a)<0<f(b)$ \tun{or} $f(a)>0>f(b)$.
+        suppose $f:[a,b]\to\bbR$ continuous and either $f(a)<0<f(b)$ \uline{or} $f(a)>0>f(b)$.
         Then $\exists c\in(a,b)$ such that $f(c)=0$.
     \end{theorem}
     \begin{proof}
@@ -467,7 +467,7 @@
 
     \section*{5.4 --- Uniform Continuity}
     \begin{definition}
-        Let $f:A\to\bbR$. $f$ is \tun{uniformly continuous} on $A$ if $\forall \varepsilon > 0,$ $\exists \delta > 0$ such that $\left|f(x)-f(y)\right|<\varepsilon$ if $|x-y|<\delta$, $\forall x,y\in A$.
+        Let $f:A\to\bbR$. $f$ is \uline{uniformly continuous} on $A$ if $\forall \varepsilon > 0,$ $\exists \delta > 0$ such that $\left|f(x)-f(y)\right|<\varepsilon$ if $|x-y|<\delta$, $\forall x,y\in A$.
     \end{definition}
 
     \begin{theorem}
@@ -491,7 +491,7 @@
         If $f:[a,b]\to\bbR$ is continuous then it is uniformly continuous on $[a, b]$.
     \end{theorem}
     \begin{proof}
-        Suppose $f$ \tun{not} uniformly conitinuous, so that $\exists \xn, (u_n)$ in $[a,b]$ and $\varepsilon_0 >0$ such that $|x_n-u_n|\to 0$ and $|f(x_n)-f(u_n)|\geq \varepsilon_0$. By the Bolzano-Weierstrauss Theorem, $\exists \xnkp$ such that $\xnk\to z\in[a,b]$.\\
+        Suppose $f$ \uline{not} uniformly conitinuous, so that $\exists \xn, (u_n)$ in $[a,b]$ and $\varepsilon_0 >0$ such that $|x_n-u_n|\to 0$ and $|f(x_n)-f(u_n)|\geq \varepsilon_0$. By the Bolzano-Weierstrauss Theorem, $\exists \xnkp$ such that $\xnk\to z\in[a,b]$.\\
         Also, $|u_{n_k}-z|\leq |u_{n_k}-x_{n_k}|+|x_{n_k}-z| \to 0$. \\
         Thus, $u_{n_k}$ converges to 0. If $f$ were cotinuous, we woul dhave that
         \[f\xnkp\to f(z)\qquad\qquad f(u_{n_k})\to f(z)\]
@@ -522,10 +522,10 @@
         Let $\varepsilon >0$ be given. Set $\delta = \frac{\varepsilon}{K}$. Then, the distance from $|f(x)-f(y)|\leq K|x-y| < K\frac{\varepsilon}{K}=\varepsilon$ if $|x-y|<\delta$.
     \end{proof}
 \begin{definition}
-    If $f:A\to\bbR$ and $B\supseteq A$, then $g:B\to\bbR$ is an \tun{extension} of $f$ if $g(x)=f(x) \forall x\in A$
+    If $f:A\to\bbR$ and $B\supseteq A$, then $g:B\to\bbR$ is an \uline{extension} of $f$ if $g(x)=f(x) \forall x\in A$
 \end{definition}
 \begin{definition}
-    If $f$ and $g$ are continuous on $A$ adn $B$, respectively, we say $g$ is a \tun{continuous extension} of $f$.
+    If $f$ and $g$ are continuous on $A$ adn $B$, respectively, we say $g$ is a \uline{continuous extension} of $f$.
 \end{definition}
 
 \section*{lecture 31 march 29}
